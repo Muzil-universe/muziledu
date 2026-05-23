@@ -9,7 +9,7 @@ export function SiteHeader() {
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-gradient text-white">
             <GraduationCap className="h-5 w-5" />
           </div>
-          <span className="text-lg">EduAI <span className="text-brand-gradient">Agent</span></span>
+          <span className="text-lg">Muzil<span className="text-brand-gradient">Agents</span></span>
         </Link>
         <nav className="flex items-center gap-1 text-sm font-medium">
           <Link to="/student" className="rounded-md px-3 py-2 hover:bg-muted transition" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Student</Link>

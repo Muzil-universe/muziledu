@@ -124,7 +124,7 @@ function Home() {
       </section>
 
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} MuzilAgents · Built for Pakistan's learners
+        © 2025 MuzilAgents. Developed by Muzamil Habib. All Rights Reserved. Aligned with Pakistan Vision 2030 & UN SDG 4 Quality Education.
       </footer>
     </div>
   );

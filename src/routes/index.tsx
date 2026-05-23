@@ -5,7 +5,7 @@ import { Sparkles, BookOpen, ListChecks, FileText, Target, Globe2, ArrowRight } 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "EduAI Agent — AI-Powered Learning for Every Pakistani Student" },
+      { title: "MuzilAgents — AI-Powered Learning for Every Pakistani Student" },
       { name: "description", content: "Free AI study assistant aligned with Pakistan Vision 2030 and UN SDG 4." },
     ],
   }),
@@ -32,7 +32,7 @@ function Home() {
               <span className="text-brand-gradient">Every Pakistani Student</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              EduAI Agent explains tough topics, generates quizzes, summarizes your notes, and builds 7-day study plans — free, fast, and built for our classrooms.
+              MuzilAgents explains tough topics, generates quizzes, summarizes your notes, and builds 7-day study plans — free, fast, and built for our classrooms.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/student" className="group inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition hover:scale-[1.02] hover:shadow-primary/40">
@@ -87,7 +87,7 @@ function Home() {
             <span className="text-xs font-semibold uppercase tracking-wider text-secondary">Pakistan Vision 2030</span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">A digital-first generation of learners</h2>
             <p className="mt-4 text-muted-foreground">
-              Pakistan Vision 2030 calls for an inclusive, skill-based education system that prepares our youth for a knowledge economy. EduAI Agent delivers free, personalized AI tutoring to every student with an internet connection — from Karachi to Gilgit.
+              Pakistan Vision 2030 calls for an inclusive, skill-based education system that prepares our youth for a knowledge economy. MuzilAgents delivers free, personalized AI tutoring to every student with an internet connection — from Karachi to Gilgit.
             </p>
             <ul className="mt-6 space-y-3">
               {[
@@ -124,7 +124,7 @@ function Home() {
       </section>
 
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} EduAI Agent · Built for Pakistan's learners
+        © 2025 MuzilAgents. Developed by Muzamil Habib. All Rights Reserved. Aligned with Pakistan Vision 2030 & UN SDG 4 Quality Education.
       </footer>
     </div>
   );

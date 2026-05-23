@@ -10,7 +10,7 @@ import { toast } from "sonner";
 type Tab = "explain" | "quiz" | "summary" | "plan";
 
 export const Route = createFileRoute("/student")({
-  head: () => ({ meta: [{ title: "Student Dashboard — EduAI Agent" }] }),
+  head: () => ({ meta: [{ title: "Student Dashboard — MuzilAgents" }] }),
   component: StudentDash,
 });
 

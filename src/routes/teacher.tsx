@@ -7,7 +7,7 @@ import { Users, Activity, MessageSquare, TrendingUp, LogOut, Loader2 } from "luc
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/teacher")({
-  head: () => ({ meta: [{ title: "Teacher Dashboard — EduAI Agent" }] }),
+  head: () => ({ meta: [{ title: "Teacher Dashboard — MuzilAgents" }] }),
   component: TeacherDash,
 });
 

@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { Download, Target, Globe2, GraduationCap, Award } from "lucide-react";
 
 export const Route = createFileRoute("/institution")({
-  head: () => ({ meta: [{ title: "Institution Dashboard — EduAI Agent" }] }),
+  head: () => ({ meta: [{ title: "Institution Dashboard — MuzilAgents" }] }),
   component: InstitutionDash,
 });
 
@@ -85,7 +85,7 @@ function InstitutionDash() {
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-secondary">
               <Globe2 className="h-4 w-4" /> Pakistan Vision 2030 Alignment
             </div>
-            <h2 className="mt-2 text-xl font-bold">How EduAI Agent meets national goals</h2>
+            <h2 className="mt-2 text-xl font-bold">How MuzilAgents meets national goals</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {[
                 ["Universal access to quality education", "Free AI tutoring for any student with internet — bridges rural-urban gaps."],

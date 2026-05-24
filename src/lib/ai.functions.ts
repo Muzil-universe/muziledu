@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 const GATEWAY = "https://ai.gateway.lovable.dev/v1/chat/completions";
-const MODEL = "google/gemini-3-flash-preview";
+const MODEL = "google/gemini-2.5-flash";
 
 async function callAI(system: string, user: string, tool?: { name: string; schema: any }) {
   const key = process.env.LOVABLE_API_KEY;
@@ -68,9 +68,7 @@ export const generateQuiz = createServerFn({ method: "POST" })
           type: "object",
           properties: {
             questions: {
-              type: "array",
-              minItems: 5,
-              maxItems: 5,
+              type: "array", minItems: 5, maxItems: 5,
               items: {
                 type: "object",
                 properties: {
@@ -102,9 +100,7 @@ export const studyPlan = createServerFn({ method: "POST" })
           type: "object",
           properties: {
             days: {
-              type: "array",
-              minItems: 7,
-              maxItems: 7,
+              type: "array", minItems: 7, maxItems: 7,
               items: {
                 type: "object",
                 properties: {
@@ -122,4 +118,50 @@ export const studyPlan = createServerFn({ method: "POST" })
       }
     );
     return result as { days: { day: number; topic: string; tasks: string[]; hours: number }[] };
+  });
+
+export const gpaSuggestions = createServerFn({ method: "POST" })
+  .inputValidator((d) => z.object({
+    currentGpa: z.number(),
+    cumulativeCgpa: z.number().optional(),
+    courses: z.array(z.object({
+      name: z.string(), credits: z.number(), grade: z.string(), points: z.number(),
+    })).min(1).max(20),
+  }).parse(d))
+  .handler(async ({ data }) => {
+    const result = await callAI(
+      "You are an academic coach for Pakistani university students. Analyze a GPA report and give actionable, motivational guidance. Be specific and encouraging.",
+      `Semester GPA: ${data.currentGpa.toFixed(2)} (out of 4.0)
+Cumulative CGPA: ${data.cumulativeCgpa?.toFixed(2) ?? "n/a"}
+Courses:
+${data.courses.map(c => `- ${c.name} | ${c.credits} cr | ${c.grade} (${c.points})`).join("\n")}
+
+Analyze and respond.`,
+      {
+        name: "gpa_coach",
+        schema: {
+          type: "object",
+          properties: {
+            weak_subjects: {
+              type: "array",
+              items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name","reason"] },
+            },
+            study_plan: { type: "array", items: { type: "string" }, minItems: 3, maxItems: 6 },
+            improvement_projections: {
+              type: "array",
+              items: { type: "object", properties: { subject: { type: "string" }, new_grade: { type: "string" }, projected_gpa: { type: "number" } }, required: ["subject","new_grade","projected_gpa"] },
+              minItems: 1, maxItems: 5,
+            },
+            motivation: { type: "string" },
+          },
+          required: ["weak_subjects","study_plan","improvement_projections","motivation"],
+        },
+      }
+    );
+    return result as {
+      weak_subjects: { name: string; reason: string }[];
+      study_plan: string[];
+      improvement_projections: { subject: string; new_grade: string; projected_gpa: number }[];
+      motivation: string;
+    };
   });

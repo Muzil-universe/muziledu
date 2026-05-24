@@ -35,11 +35,14 @@ function Home() {
               MuzilAgents explains tough topics, generates quizzes, summarizes your notes, and builds 7-day study plans — free, fast, and built for our classrooms.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/student" className="group inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition hover:scale-[1.02] hover:shadow-primary/40">
-                Get Started Free <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <Link to="/register" className="group inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition hover:scale-[1.02] hover:shadow-primary/40">
+                Student Sign Up <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
-              <Link to="/institution" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
-                For Institutions
+              <Link to="/teacher/login" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
+                Teacher Login
+              </Link>
+              <Link to="/institution/login" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
+                Institution Login
               </Link>
             </div>
 
@@ -114,10 +117,10 @@ function Home() {
             <p className="mt-4 text-sm text-muted-foreground">
               "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all."
             </p>
-            <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-              <Stat value="12k+" label="Students" />
-              <Stat value="48k" label="AI sessions" />
-              <Stat value="92%" label="Quiz pass rate" />
+            <div className="mt-6 grid grid-cols-3 gap-4 text-center text-sm">
+              <FeatureBullet label="Free for all students" />
+              <FeatureBullet label="AI-powered tools" />
+              <FeatureBullet label="Built in Pakistan" />
             </div>
           </div>
         </div>
@@ -146,11 +149,8 @@ function FeatureCard({ icon, title, desc, tone }: { icon: React.ReactNode; title
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function FeatureBullet({ label }: { label: string }) {
   return (
-    <div>
-      <div className="text-2xl font-extrabold text-brand-gradient">{value}</div>
-      <div className="text-xs text-muted-foreground">{label}</div>
-    </div>
+    <div className="rounded-md bg-brand-green-soft p-2 text-xs font-semibold text-primary">{label}</div>
   );
 }

@@ -14,6 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
+      gpa_records: {
+        Row: {
+          courses: Json
+          created_at: string
+          cumulative_cgpa: number | null
+          gpa: number
+          id: string
+          semester_label: string
+          user_id: string
+        }
+        Insert: {
+          courses?: Json
+          created_at?: string
+          cumulative_cgpa?: number | null
+          gpa: number
+          id?: string
+          semester_label: string
+          user_id: string
+        }
+        Update: {
+          courses?: Json
+          created_at?: string
+          cumulative_cgpa?: number | null
+          gpa?: number
+          id?: string
+          semester_label?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      institutions: {
+        Row: {
+          admin_user_id: string | null
+          city: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          type: string | null
+        }
+        Insert: {
+          admin_user_id?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          type?: string | null
+        }
+        Update: {
+          admin_user_id?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          type?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          city: string | null
+          created_at: string
+          current_cgpa: number | null
+          current_semester: number | null
+          email: string
+          full_name: string
+          inst_type: string | null
+          institution_id: string | null
+          institution_name: string | null
+          role: Database["public"]["Enums"]["app_role"]
+          teacher_code: string | null
+          university: string | null
+          user_id: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          current_cgpa?: number | null
+          current_semester?: number | null
+          email: string
+          full_name: string
+          inst_type?: string | null
+          institution_id?: string | null
+          institution_name?: string | null
+          role: Database["public"]["Enums"]["app_role"]
+          teacher_code?: string | null
+          university?: string | null
+          user_id: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          current_cgpa?: number | null
+          current_semester?: number | null
+          email?: string
+          full_name?: string
+          inst_type?: string | null
+          institution_id?: string | null
+          institution_name?: string | null
+          role?: Database["public"]["Enums"]["app_role"]
+          teacher_code?: string | null
+          university?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       quiz_results: {
         Row: {
           created_at: string
@@ -68,15 +184,40 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_institution: { Args: { _user_id: string }; Returns: string }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "student" | "teacher" | "institution"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -203,6 +344,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["student", "teacher", "institution"],
+    },
   },
 } as const

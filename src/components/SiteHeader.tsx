@@ -43,18 +43,6 @@ export function SiteHeader() {
             <Link to="/login" className="ml-2 rounded-md bg-brand-gradient px-3 py-1.5 text-xs font-semibold text-white">Login</Link>
           )}
         </nav>
-
-          {profile ? (
-            <div className="ml-2 flex items-center gap-2 border-l border-border pl-3">
-              <span className="hidden text-xs text-muted-foreground sm:inline">Welcome back, <strong className="text-foreground">{profile.full_name.split(" ")[0]}</strong></span>
-              <button onClick={handleLogout} className="inline-flex items-center gap-1 rounded-md border border-border px-2.5 py-1.5 text-xs hover:bg-muted">
-                <LogOut className="h-3.5 w-3.5" /> Logout
-              </button>
-            </div>
-          ) : (
-            <Link to="/login" className="ml-2 rounded-md bg-brand-gradient px-3 py-1.5 text-xs font-semibold text-white">Student Login</Link>
-          )}
-        </nav>
       </div>
     </header>
   );

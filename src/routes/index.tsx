@@ -93,7 +93,7 @@ function Home() {
               {[
                 "Equal access to AI tutoring for underserved regions",
                 "Bilingual-friendly explanations for diverse learners",
-                "Data-driven insights for teachers and institutions",
+                "Personalized study plans for every learner",
                 "Quality education aligned with UN SDG 4 targets",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm">

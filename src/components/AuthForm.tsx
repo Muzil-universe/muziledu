@@ -97,7 +97,9 @@ export function AuthCard({
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
         <form onSubmit={submit} className="mt-6 space-y-4">
-          {fields.map((f) => (
+          {fields.map((f) => {
+            const isCgpa = f.name === "current_cgpa";
+            return (
             <div key={f.name}>
               <label className="text-xs font-medium">{f.label}</label>
               <input
@@ -106,10 +108,14 @@ export function AuthCard({
                 type={f.type ?? "text"}
                 required={f.required}
                 minLength={f.type === "password" ? 6 : undefined}
+                min={isCgpa ? 0 : undefined}
+                max={isCgpa ? 4 : undefined}
+                step={isCgpa ? "0.01" : undefined}
                 className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
             </div>
-          ))}
+            );
+          })}
           <button disabled={busy} className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand-gradient py-2.5 text-sm font-semibold text-white disabled:opacity-50">
             {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {mode === "login" ? "Sign in" : "Create account"}

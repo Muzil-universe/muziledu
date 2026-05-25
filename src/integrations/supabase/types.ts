@@ -128,13 +128,6 @@ export type Database = {
             referencedRelation: "institutions"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "profiles_institution_id_fkey"
-            columns: ["institution_id"]
-            isOneToOne: false
-            referencedRelation: "institutions_public"
-            referencedColumns: ["id"]
-          },
         ]
       }
       quiz_results: {
@@ -211,30 +204,7 @@ export type Database = {
       }
     }
     Views: {
-      institutions_public: {
-        Row: {
-          city: string | null
-          created_at: string | null
-          id: string | null
-          name: string | null
-          type: string | null
-        }
-        Insert: {
-          city?: string | null
-          created_at?: string | null
-          id?: string | null
-          name?: string | null
-          type?: string | null
-        }
-        Update: {
-          city?: string | null
-          created_at?: string | null
-          id?: string | null
-          name?: string | null
-          type?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       get_user_institution: { Args: { _user_id: string }; Returns: string }

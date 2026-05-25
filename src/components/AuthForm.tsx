@@ -33,6 +33,13 @@ export function AuthCard({
     e.preventDefault();
     setBusy(true);
     try {
+      // Validate CGPA if present
+      if (mode === "register" && values.current_cgpa) {
+        const cgpa = Number(values.current_cgpa);
+        if (Number.isNaN(cgpa) || cgpa < 0 || cgpa > 4) {
+          throw new Error("CGPA must be between 0.0 and 4.0");
+        }
+      }
       if (mode === "login") {
         const { error } = await supabase.auth.signInWithPassword({
           email: values.email, password: values.password,

@@ -22,19 +22,14 @@ export function SiteHeader() {
         </Link>
 
         <nav className="flex items-center gap-1 text-sm font-medium">
+          <Link to="/" className="rounded-md px-3 py-2 hover:bg-muted transition" activeOptions={{ exact: true }} activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Home</Link>
           {profile?.role === "student" && (
             <>
-              <Link to="/student" className="rounded-md px-3 py-2 hover:bg-muted transition" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Dashboard</Link>
+              <Link to="/student" className="rounded-md px-3 py-2 hover:bg-muted transition" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Student</Link>
               <Link to="/calculator" className="rounded-md px-3 py-2 hover:bg-muted transition inline-flex items-center gap-1" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary inline-flex items-center gap-1" }}>
-                <CalcIcon className="h-3.5 w-3.5" /> GPA
+                <CalcIcon className="h-3.5 w-3.5" /> Calculator
               </Link>
             </>
-          )}
-          {profile?.role === "teacher" && (
-            <Link to="/teacher" className="rounded-md px-3 py-2 hover:bg-muted transition" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Teacher</Link>
-          )}
-          {profile?.role === "institution" && (
-            <Link to="/institution" className="rounded-md px-3 py-2 hover:bg-muted transition" activeProps={{ className: "rounded-md px-3 py-2 bg-muted text-primary" }}>Institution</Link>
           )}
 
           {profile ? (
@@ -45,7 +40,7 @@ export function SiteHeader() {
               </button>
             </div>
           ) : (
-            <Link to="/login" className="ml-2 rounded-md bg-brand-gradient px-3 py-1.5 text-xs font-semibold text-white">Student Login</Link>
+            <Link to="/login" className="ml-2 rounded-md bg-brand-gradient px-3 py-1.5 text-xs font-semibold text-white">Login</Link>
           )}
         </nav>
       </div>

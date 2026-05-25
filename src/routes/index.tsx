@@ -38,11 +38,8 @@ function Home() {
               <Link to="/register" className="group inline-flex items-center gap-2 rounded-lg bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition hover:scale-[1.02] hover:shadow-primary/40">
                 Student Sign Up <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
-              <Link to="/teacher/login" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
-                Teacher Login
-              </Link>
-              <Link to="/institution/login" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
-                Institution Login
+              <Link to="/login" className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-muted transition">
+                Student Login
               </Link>
             </div>
 
@@ -96,7 +93,7 @@ function Home() {
               {[
                 "Equal access to AI tutoring for underserved regions",
                 "Bilingual-friendly explanations for diverse learners",
-                "Data-driven insights for teachers and institutions",
+                "Personalized study plans for every learner",
                 "Quality education aligned with UN SDG 4 targets",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm">
